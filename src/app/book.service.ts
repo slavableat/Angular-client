@@ -7,15 +7,20 @@ import {Book} from "./book";
   providedIn: 'root'
 })
 export class BookService {
-  private booksUrl='http://localhost:8080/books';
+  private booksUrl='http://localhost:8080';
 
   constructor(private httpClient: HttpClient) {}
 
   public findAll(): Observable<Book[]> {
-    return this.httpClient.get<Book[]>(this.booksUrl);
+    return this.httpClient.get<Book[]>(`${this.booksUrl}/books`);
   }
 
   public save(book: Book) {
     return this.httpClient.post<Book>(this.booksUrl, book);
   }
+
+  public deleteBook(id:number){
+    return this.httpClient.delete(`${this.booksUrl}/delete/${id}`);
+  }
+
 }
