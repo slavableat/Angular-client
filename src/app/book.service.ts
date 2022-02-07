@@ -15,11 +15,11 @@ export class BookService {
     return this.httpClient.get<Book[]>(`${this.booksUrl}/books`);
   }
 
-  public save(book: Book) {
-    return this.httpClient.post<Book>(this.booksUrl, book);
+  public saveBook(book: Book) : Observable<Object>{
+    return this.httpClient.post<Book>(`${this.booksUrl}/book-create`, book);
   }
 
-  public deleteBook(id:number){
+  public deleteBook(id:number): Observable<Object>{
     return this.httpClient.delete(`${this.booksUrl}/delete/${id}`);
   }
 

@@ -8,6 +8,7 @@ import { BookListComponent } from './book-list/book-list.component';
 import {BookService} from "./book.service";
 import { HttpClientModule} from "@angular/common/http";
 import { AddBookComponent } from './add-book/add-book.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -20,7 +21,9 @@ import { AddBookComponent } from './add-book/add-book.component';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [BookService],
   bootstrap: [AppComponent]
