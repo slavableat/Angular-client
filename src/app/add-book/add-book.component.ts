@@ -3,6 +3,7 @@ import {Book} from "../book";
 import {BookService} from "../book.service";
 import {Router} from "@angular/router";
 import {Genre} from "../genre";
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-add-book',
@@ -10,26 +11,31 @@ import {Genre} from "../genre";
   styleUrls: ['./add-book.component.css']
 })
 export class AddBookComponent implements OnInit {
+  myForm : FormGroup;
   book:Book=new Book();
-  constructor(private bookService :BookService,
-              private router:Router) { }
-
-  ngOnInit(): void {
-    this.book.authors=[];
+  constructor(private formBuilder: FormBuilder){
     this.book.genre=new Genre();
-  }
-
-  saveBook(){
-    this.bookService.saveBook(this.book).subscribe(data=>{
-      console.log(data);
-      this.goToBookList();
+    this.book.authors=[];
+    this.book.authors.push();
+    this.myForm = formBuilder.group({
+      "bookName": ["", [Validators.required]],
+      "bookGenre": ["", [ Validators.required]],
+      "authors": formBuilder.array([
+        ["", Validators.required]
+      ])
     });
   }
-  goToBookList(){
-    this.router.navigate(['/books']);
+  getFormsControls() : FormArray{
+    return this.myForm.controls['authors'] as FormArray;
   }
-  onSubmit(){
+  addPhone(){
+    (<FormArray>this.myForm.controls["authors"]).push(new FormControl("", Validators.required));
+  }
+  submit(){
     console.log(this.book);
-    this.saveBook();
+    console.log(this.myForm);
+  }
+
+  ngOnInit(): void {
   }
 }

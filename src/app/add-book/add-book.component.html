@@ -1,25 +1,34 @@
-<div class="col-md-6 offset-md-3">
-  <h3> Create Book </h3>
-  <form (ngSubmit) = "onSubmit()">
+<form [formGroup]="myForm" novalidate (ngSubmit)="submit()">
+  <div class="form-group">
+    <label>Имя книги</label>
+    <input class="form-control" name="name" formControlName="bookName" />
 
-    <div class="form-group">
-      <label> Имя книги</label>
-      <input type="text" class ="form-control" id = "name"
-             [(ngModel)] = "book.name" name = "book">
+    <div class="alert alert-danger"
+         *ngIf="myForm.controls['bookName'].invalid && myForm.controls['bookName'].touched">
+      Не указано имя
     </div>
+  </div>
+  <div class="form-group">
+    <label>Жанр</label>
+    <input class="form-control" name="genre" formControlName="bookGenre" />
 
-    <div class="form-group">
-      <label> Жанр</label>
-      <input type="text" class ="form-control" id = "genre"
-             [(ngModel)] = "book.genre.name" name = "genre">
+    <div class="alert alert-danger"
+         *ngIf="myForm.controls['bookGenre'].invalid && myForm.controls['bookGenre'].touched">
+      Некорректный жанр
     </div>
-
-    <div class="form-group">
-      <label> Авторы</label>
-
+  </div>
+  <div formArrayName="authors">
+    <div class="form-group" *ngFor="let author of getFormsControls()['controls']; let i = index">
+      <label>Автор</label>
+      <input class="form-control" formControlName="{{i}}"/>
     </div>
-
-    <button class = "btn btn-success" type ="submit">Submit</button>
-
-  </form>
-</div>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-dark" (click)="addPhone()">
+      Добавить автора
+    </button>
+    <button class="btn btn-danger" [disabled]="myForm.invalid">
+      Отправить
+    </button>
+  </div>
+</form>
