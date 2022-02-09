@@ -4,6 +4,7 @@ import {BookService} from "../book.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {Router} from "@angular/router";
 
+
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
@@ -12,7 +13,8 @@ import {Router} from "@angular/router";
 export class BookListComponent implements OnInit {
   public books: Book[] = [];
 
-  constructor(private bookService: BookService) {
+  constructor(private bookService: BookService,
+              private router:Router) {
   }
 
   ngOnInit(): void {
@@ -36,4 +38,11 @@ export class BookListComponent implements OnInit {
       this.getBooks();
     })
   }
+  public editBook(id:number){
+    console.log("edit1");
+    this.router.navigate(['add-book']);
+    console.log("edit2");
+  }
+
+
   }

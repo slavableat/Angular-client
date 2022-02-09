@@ -9,13 +9,15 @@ import {BookService} from "./book.service";
 import { HttpClientModule} from "@angular/common/http";
 import { AddBookComponent } from './add-book/add-book.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { UpdateBookComponent } from './update-book/update-book.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     BookListComponent,
-    AddBookComponent
+    AddBookComponent,
+    UpdateBookComponent
   ],
   imports: [
     BrowserModule,

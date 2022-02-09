@@ -22,5 +22,8 @@ export class BookService {
   public deleteBook(id:number): Observable<Object>{
     return this.httpClient.delete(`${this.booksUrl}/delete/${id}`);
   }
+  public getById(id:number):Observable<Book>{
+    return this.httpClient.get<Book>(`${this.booksUrl}/books-edit/${id}`);
+  }
 
 }

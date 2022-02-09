@@ -16,8 +16,12 @@
         <td>{{ book.name }}</td>
         <td>{{book.genre.name}}</td>
         <td><p *ngFor="let author of book.authors">{{author.name}}</p></td>
-        <td><button class="btn btn-danger" (click)="deleteBook(book.id)"> Удалить книгу</button></td>
+        <td>
+          <button class="btn btn-danger" (click)="editBook(book.id)"> Изменить</button><br><br>
+          <button class="btn btn-danger" (click)="deleteBook(book.id)"> Удалить</button>
+        </td>
       </tr>
+
       </tbody>
     </table>
   </div>

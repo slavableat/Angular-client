@@ -17,13 +17,16 @@ export class AddBookComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private bookService:BookService,
               private router:Router){
+
+  }
+  ngOnInit(): void {
     this.book.genre=new Genre();
     this.book.authors=[];
     this.book.authors.push();
-    this.myForm = formBuilder.group({
+    this.myForm = this.formBuilder.group({
       "bookName": ["", [Validators.required]],
       "bookGenre": ["", [ Validators.required]],
-      "authors": formBuilder.array([
+      "authors": this.formBuilder.array([
         ["", Validators.required]
       ])
     });
@@ -48,8 +51,5 @@ export class AddBookComponent implements OnInit {
     console.log(this.book);
   });
 
-  }
-
-  ngOnInit(): void {
   }
 }
