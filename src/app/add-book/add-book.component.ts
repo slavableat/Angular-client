@@ -34,8 +34,11 @@ export class AddBookComponent implements OnInit {
   getFormsControls() : FormArray{
     return this.myForm.controls['authors'] as FormArray;
   }
-  addBook(){
+  addAuthor(){
     this.getFormsControls().push(new FormControl("", Validators.required));
+  }
+  deleteAuthor(id:number){
+    this.getFormsControls().removeAt(id);
   }
   submit(){
     console.log(this.myForm.value);

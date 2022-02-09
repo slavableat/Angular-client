@@ -25,5 +25,8 @@ export class BookService {
   public getById(id:number):Observable<Book>{
     return this.httpClient.get<Book>(`${this.booksUrl}/book-edit/${id}`);
   }
+  public updateBook(book:Book):Observable<Object>{
+    return this.httpClient.post<Book>(`${this.booksUrl}/book-edit/${book.id}`,book);
+  }
 
 }
