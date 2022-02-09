@@ -4,6 +4,7 @@ import {BookService} from "../book.service";
 import {Router} from "@angular/router";
 import {Genre} from "../genre";
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Author} from "../author";
 
 @Component({
   selector: 'app-add-book',
@@ -13,7 +14,9 @@ import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angul
 export class AddBookComponent implements OnInit {
   myForm : FormGroup;
   book:Book=new Book();
-  constructor(private formBuilder: FormBuilder){
+  constructor(private formBuilder: FormBuilder,
+              private bookService:BookService,
+              private router:Router){
     this.book.genre=new Genre();
     this.book.authors=[];
     this.book.authors.push();
@@ -28,12 +31,23 @@ export class AddBookComponent implements OnInit {
   getFormsControls() : FormArray{
     return this.myForm.controls['authors'] as FormArray;
   }
-  addPhone(){
-    (<FormArray>this.myForm.controls["authors"]).push(new FormControl("", Validators.required));
+  addBook(){
+    this.getFormsControls().push(new FormControl("", Validators.required));
   }
   submit(){
+    console.log(this.myForm.value);
+    for (let formAuthor of this.myForm.value.authors) {
+      let author:Author=new Author();
+      author.name=formAuthor;
+      this.book.authors.push(author);
+    }
+  this.book.name=this.myForm.value.bookName;
+  this.book.genre.name=this.myForm.value.bookGenre;
+  this.bookService.saveBook(this.book).subscribe(data=>{
+    this.router.navigate(['books']);
     console.log(this.book);
-    console.log(this.myForm);
+  });
+
   }
 
   ngOnInit(): void {

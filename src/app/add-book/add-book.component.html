@@ -1,21 +1,11 @@
-<form [formGroup]="myForm" novalidate (ngSubmit)="submit()">
+<form [formGroup]="myForm" novalidate>
   <div class="form-group">
     <label>Имя книги</label>
     <input class="form-control" name="name" formControlName="bookName" />
-
-    <div class="alert alert-danger"
-         *ngIf="myForm.controls['bookName'].invalid && myForm.controls['bookName'].touched">
-      Не указано имя
-    </div>
   </div>
   <div class="form-group">
     <label>Жанр</label>
     <input class="form-control" name="genre" formControlName="bookGenre" />
-
-    <div class="alert alert-danger"
-         *ngIf="myForm.controls['bookGenre'].invalid && myForm.controls['bookGenre'].touched">
-      Некорректный жанр
-    </div>
   </div>
   <div formArrayName="authors">
     <div class="form-group" *ngFor="let author of getFormsControls()['controls']; let i = index">
@@ -24,10 +14,10 @@
     </div>
   </div>
   <div class="form-group">
-    <button class="btn btn-dark" (click)="addPhone()">
+    <button class="btn btn-dark" (click)="addBook()">
       Добавить автора
     </button>
-    <button class="btn btn-danger" [disabled]="myForm.invalid">
+    <button (click)="submit()" class="btn btn-default" [disabled]="myForm.invalid">
       Отправить
     </button>
   </div>
