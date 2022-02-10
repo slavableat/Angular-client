@@ -40,7 +40,7 @@ export class BookListComponent implements OnInit {
   }
   public editBook(id:number){
     console.log("edit1");
-    this.router.navigate(['add-book']);
+    this.router.navigate(['edit-book']);
     console.log("edit2");
   }
 

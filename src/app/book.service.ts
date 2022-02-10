@@ -23,7 +23,7 @@ export class BookService {
     return this.httpClient.delete(`${this.booksUrl}/delete/${id}`);
   }
   public getById(id:number):Observable<Book>{
-    return this.httpClient.get<Book>(`${this.booksUrl}/books-edit/${id}`);
+    return this.httpClient.get<Book>(`${this.booksUrl}/book-edit/${id}`);
   }
 
 }

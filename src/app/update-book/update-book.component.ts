@@ -20,7 +20,8 @@ export class UpdateBookComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.id=this.route.snapshot.params['id'];
+    console.log("updatebook ngoninit");
+    this.id=225;
     this.bookService.getById(this.id).subscribe(data=>{
       this.book=data;
       console.log(this.book);
