@@ -1,3 +1,4 @@
+<h1 class="text-center"> Редактирование книги </h1>
 <form [formGroup]="myForm" novalidate>
   <div class="form-group">
     <label>Имя книги</label>
@@ -11,14 +12,14 @@
     <div class="form-group" *ngFor="let author of getFormsControls()['controls']; let i = index">
       <label>Автор</label>
       <input class="form-control" formControlName="{{i}}"/>
-      <button class="btn btn-dark" (click)="deleteAuthor(i)">
-        Удалить автора
+      <button class="delete-button btn btn-dark" (click)="deleteAuthor(i)">
+        X
       </button>
     </div>
   </div>
 
   <div class="form-group">
-    <button class="btn btn-dark" (click)="addAuthor()">
+    <button class="add-btn btn btn-dark" (click)="addAuthor()">
       Добавить автора
     </button>
     <button (click)="submit()" class="btn btn-danger" [disabled]="myForm.invalid">

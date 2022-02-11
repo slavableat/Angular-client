@@ -39,7 +39,7 @@ export class BookListComponent implements OnInit {
     })
   }
   public editBook(id:number){
-    this.router.navigate(['edit-book']);
+    this.router.navigate(['edit-book',{id:id}]);
   }
 
 

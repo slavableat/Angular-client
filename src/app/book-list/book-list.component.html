@@ -1,3 +1,4 @@
+<h1 class="text-center"> Библиотека </h1>
 <div class="card my-5">
   <div class="card-body">
     <table class="table table-bordered table-striped">
@@ -18,10 +19,9 @@
         <td><p *ngFor="let author of book.authors">{{author.name}}</p></td>
         <td>
 
-          <button class="btn btn-danger" (click)="editBook(book.id)"> Изменить</button>
-          <br><br>
-
-          <button class="btn btn-danger" (click)="deleteBook(book.id)"> Удалить</button>
+          <button class="book-btn btn btn-danger" style="background: green; border-color: green"(click)="editBook(book.id)"> Изменить</button>
+          <br>
+          <button class="book-btn btn btn-danger" (click)="deleteBook(book.id)"> Удалить</button>
         </td>
       </tr>
 
