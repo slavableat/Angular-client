@@ -10,6 +10,8 @@ import { HttpClientModule} from "@angular/common/http";
 import { AddBookComponent } from './add-book/add-book.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { UpdateBookComponent } from './update-book/update-book.component';
+import { GenreListComponent } from './genre-list/genre-list.component';
+import { AuthorListComponent } from './author-list/author-list.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { UpdateBookComponent } from './update-book/update-book.component';
     AppComponent,
     BookListComponent,
     AddBookComponent,
-    UpdateBookComponent
+    UpdateBookComponent,
+    GenreListComponent,
+    AuthorListComponent
   ],
   imports: [
     BrowserModule,

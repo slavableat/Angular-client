@@ -22,7 +22,7 @@ export class BookListComponent implements OnInit {
   }
 
   public getBooks(): void {
-    this.bookService.findAll().subscribe(
+    this.bookService.findAllBooks().subscribe(
       (response: Book[]) => {
         this.books = response;
         console.log(this.books);

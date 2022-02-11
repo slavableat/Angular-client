@@ -4,7 +4,6 @@
     <table class="table table-bordered table-striped">
       <thead class="thead-dark">
       <tr>
-        <th scope="col">#</th>
         <th scope="col">Имя книги</th>
         <th scope="col">Жанр</th>
         <th scope="col">Авторы</th>
@@ -13,7 +12,6 @@
       </thead>
       <tbody>
       <tr *ngFor="let book of books">
-        <td class="overflow-hidden">{{ book.id }}</td>
         <td>{{ book.name }}</td>
         <td>{{book.genre.name}}</td>
         <td><p *ngFor="let author of book.authors">{{author.name}}</p></td>
