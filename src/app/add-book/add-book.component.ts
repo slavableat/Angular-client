@@ -51,7 +51,6 @@ export class AddBookComponent implements OnInit {
   this.book.genre.name=this.myForm.value.bookGenre;
   this.bookService.saveBook(this.book).subscribe(data=>{
     this.router.navigate(['books']);
-    console.log(this.book);
   });
 
   }

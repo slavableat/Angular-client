@@ -28,7 +28,7 @@ export class BookService {
     return this.httpClient.get<Book>(`${this.booksUrl}/book-edit/${id}`);
   }
   public updateBook(book:Book):Observable<Object>{
-    return this.httpClient.post<Book>(`${this.booksUrl}/book-edit/${book.id}`,book);
+    return this.httpClient.put<Book>(`${this.booksUrl}/book-edit/${book.id}`,book);
   }
   public findAllGenres(): Observable<Genre[]> {
     return this.httpClient.get<Genre[]>(`${this.booksUrl}/genres`);

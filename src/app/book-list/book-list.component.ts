@@ -18,6 +18,7 @@ export class BookListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log("booklist")
     this.getBooks();
   }
 
@@ -25,7 +26,6 @@ export class BookListComponent implements OnInit {
     this.bookService.findAllBooks().subscribe(
       (response: Book[]) => {
         this.books = response;
-        console.log(this.books);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -34,7 +34,6 @@ export class BookListComponent implements OnInit {
   }
   public deleteBook(id:number){
     this.bookService.deleteBook(id).subscribe( data => {
-      console.log(data);
       this.getBooks();
     })
   }

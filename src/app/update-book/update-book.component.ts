@@ -22,8 +22,6 @@ export class UpdateBookComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("updatebook ngoninit");
-    //this.id=232;
    this.id=this.route.snapshot.params['id'];
     this.bookService.getById(this.id).subscribe(data=>{
       this.oldBook=data;
@@ -54,7 +52,7 @@ export class UpdateBookComponent implements OnInit {
     let book:Book=new Book();
     book.genre=new Genre();
     book.authors=[];
-    book.id=this.id;                                          ///////////ТЕСТ
+    book.id=this.id;
     for (let formAuthor of this.myForm.value.authors) {
       let author:Author=new Author();
       author.name=formAuthor;
